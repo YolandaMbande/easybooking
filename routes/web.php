@@ -10,12 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Welcome page route (for first-time visitors)
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
 
 // Web routes file
-Route::get('/', [EventController::class, 'index'])->name('welcome');
+Route::get('/', [EventController::class, 'showEventsWelcomePage'])->name('welcome');
 
 // Public routes
 Route::get('/home', [HomeController::class, 'index'])->name('home');

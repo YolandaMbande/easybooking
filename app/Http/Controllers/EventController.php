@@ -16,7 +16,6 @@ class EventController extends Controller
         return view('events.create_event', compact('categories'));
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
@@ -62,11 +61,12 @@ class EventController extends Controller
     }
 
 
-    public function index()
-    {
+    public function showEventsWelcomePage() {
         $upcomingEvents = Event::where('status', 'upcoming')->get();
         $completeEvents = Event::where('status', 'complete')->get();
         $ongoingEvents = Event::where('status', 'ongoing')->get();
+
+        //dd($upcomingEvents, $completeEvents, $ongoingEvents);
 
         return view('welcome', [
             'upcomingEvents' => $upcomingEvents,
