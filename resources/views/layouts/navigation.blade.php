@@ -19,7 +19,7 @@
                     @endif
 
                     @if(Auth::check() && Auth::user()->hasRole('organizer'))
-                            <x-nav-link :href="route('events.create_event')" :active="request()->routeIs('events.create_event')">
+                            <x-nav-link :href="route('events.create')" :active="request()->routeIs('events.create')">
                                 {{ __('Create Event') }}
                             </x-nav-link>
                         @endif
@@ -61,7 +61,7 @@
                             </x-dropdown-link>
 
                             @if(Auth::check() && Auth::user()->hasRole('organizer'))
-                                <x-nav-link :href="route('events.create_event')" :active="request()->routeIs('events.create_event')">
+                                <x-nav-link :href="route('events.create')" :active="request()->routeIs('events.create')">
                                     {{ __('Create Event') }}
                                 </x-nav-link>
                             @endif
@@ -102,7 +102,7 @@
             @endif
 
             @if(Auth::check() && Auth::user()->hasRole('organizer'))
-                    <x-nav-link :href="route('events.create_event')" :active="request()->routeIs('events.create_event')">
+                    <x-nav-link :href="route('events.create')" :active="request()->routeIs('events.create')">
                         {{ __('Create Event') }}
                     </x-nav-link>
                 @endif
@@ -135,7 +135,7 @@
                     </x-responsive-nav-link>
 
                     @if(Auth::check() && Auth::user()->hasRole('organizer'))
-                        <x-responsive-nav-link :href="route('events.create_event')">
+                        <x-responsive-nav-link :href="route('events.create')">
                             {{ __('Create Event') }}
                         </x-responsive-nav-link>
                     @endif

@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 // Organizer routes (restricted to organizers)
 Route::middleware(['auth', 'role:organizer'])->group(function () {
     //creates the event
-    Route::get('/events/create_event', [EventController::class, 'create'])->name('events.create_event');
+    Route::get('/events', [EventController::class, 'create'])->name('events.create');
    //saves them
     Route::post('/events', [EventController::class, 'store'])->name('events.store');
 });

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzFvUmTlPsGe3yc1O2Ug7ThQBv7-hpx3I&callback=initMap" async defer></script>
+
     <div class="text-center mb-6">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
             {{ __('Create Event') }}

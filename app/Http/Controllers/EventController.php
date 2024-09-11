@@ -12,6 +12,7 @@ class EventController extends Controller
     // Create event page
     public function create()
     {
+        \Log::info('Create method in EventController accessed.');
         $categories = Category::all();
         return view('events.create_event', compact('categories'));
     }
