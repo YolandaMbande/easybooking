@@ -12,39 +12,30 @@ class EventController extends Controller
     // Create event page
     public function create()
     {
-        \Log::info('Create method in EventController accessed.');
+
         $categories = Category::all();
         return view('events.create_event', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'location' => 'required|string|max:255',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'date_time' => 'required|date',
             'category_id' => 'required|exists:categories,id',
-            'max_attendees' => 'required|integer',
-            'ticket_price' => 'required|numeric',
-            'status' => 'required|in:Upcoming,Ongoing,Completed',
-            'visibility' => 'required|in:Public,Private',
+            'max_attendees' => 'required|integer|min:1',
+            'ticket_price' => 'required|numeric|min:0',
+            'status' => 'required|string|in:Upcoming,Ongoing,Completed',
+            'visibility' => 'required|string|in:Public,Private',
         ]);
 
-        // Create event under the authenticated user
-        Event::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'location' => $request->location,
-            'date_time' => $request->date_time,
-            'category_id' => $request->category_id,
-            'organizer_id' => Auth::id(),
-            'max_attendees' => $request->max_attendees,
-            'ticket_price' => $request->ticket_price,
-            'status' => $request->status,
-            'visibility' => $request->visibility,
-        ]);
+        $validatedData['organizer_id'] = auth()->user()->id;
 
+        Event::create($validatedData);
 
         return redirect()->route('dashboard')->with('success', 'Event created successfully!');
     }

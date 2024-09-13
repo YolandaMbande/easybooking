@@ -1,51 +1,62 @@
 <?php
+
 namespace App\Http\Controllers;
 
-    use App\Models\Booking;
-    use App\Models\Event;
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Auth;
+use App\Mail\BookingConfirmation;
+use App\Mail\OrganizerNotification;
+use App\Models\Booking;
+use App\Models\Event;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
-    class BookingController extends Controller
-    {
-
+class BookingController extends Controller
+{
     public function create($eventId)
     {
         $event = Event::findOrFail($eventId);
         return view('bookings.create', compact('event'));
     }
 
-
     public function store(Request $request)
     {
         $event = Event::findOrFail($request->event_id);
 
-
+        // Validate request data
         $request->validate([
             'num_tickets' => 'required|integer|min:1',
         ]);
 
-        // Check if the event has enough tickets
+        // Check if there are enough tickets available
         if ($event->max_attendees && $event->bookings()->sum('num_tickets') + $request->num_tickets > $event->max_attendees) {
-        return back()->with('error', 'Not enough tickets available for this event.');
+            return back()->with('error', 'Not enough tickets available for this event.');
+        }
+
+        // Calculate total price
+        $totalPrice = $event->ticket_price * $request->num_tickets;
+
+        // Create booking
+        $booking = Booking::create([
+            'user_id' => Auth::id(),
+            'event_id' => $event->id,
+            'booking_date' => now(),
+            'num_tickets' => $request->num_tickets,
+            'total_price' => $totalPrice,
+            'payment_status' => 'Pending',
+            'status' => 'Pending',
+        ]);
+
+        // Send email to the attendee
+        $numTickets = $request->num_tickets;  // Get the number of tickets
+        Mail::to(Auth::user()->email)->send(new BookingConfirmation($event, Auth::user(), $numTickets));
+
+        // Send email to the organizer
+        $organizer = $event->organizer;
+        if ($organizer) {
+            Mail::to($organizer->email)->send(new OrganizerNotification($event, Auth::user(), $numTickets));
+        }
+
+        // Redirect to payment page
+        return redirect()->route('payment.show', ['booking' => $booking->id]);
     }
-
-    // Calculate the total price
-    $totalPrice = $event->ticket_price * $request->num_tickets;
-
-    // Create the booking
-    $booking = Booking::create([
-    'user_id' => Auth::id(),
-    'event_id' => $event->id,
-    'booking_date' => now(),
-    'num_tickets' => $request->num_tickets,
-    'total_price' => $totalPrice,
-    'payment_status' => 'Pending',
-    'status' => 'Pending',
-    ]);
-
-    // Redirect to the payment page with the correct booking ID
-    return redirect()->route('payment.show', ['booking' => $booking->id]);
-    }
-    }
-
+}
