@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    // Create event page
+   
     public function create()
     {
-
         $categories = Category::all();
         return view('events.create_event', compact('categories'));
     }
+
+    public function explore()
+    {
+        return view('events.explore_events');
+    }
+
 
     public function store(Request $request)
     {

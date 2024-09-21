@@ -114,6 +114,7 @@
                         </form>
 
                         <!-- JavaScript to handle Google Maps, autocomplete, and geocoding -->
+                         <!-- No idea how to modify this atm -->
                         <script>
                             let map;
                             let marker;

@@ -9,9 +9,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Welcome page route (for first-time visitors)
-
-
 // Web routes file
 Route::get('/', [EventController::class, 'showEventsWelcomePage'])->name('welcome');
 
@@ -21,6 +18,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Public event viewing routes (accessible without authentication)
 Route::get('/events', [EventController::class, 'showEvents'])->name('events.index');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+Route::get('/events/explore', [EventController::class, 'explore'])->name('events.explore_events');
+
+Route::get('/about', function () {
+    return view('about');})->name('about');
+
 
 // Authentication routes
 Auth::routes();
