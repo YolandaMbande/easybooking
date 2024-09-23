@@ -13,17 +13,13 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
+    
     public function create(): View
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
+    
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
@@ -33,17 +29,15 @@ class AuthenticatedSessionController extends Controller
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
+    
     public function destroy(Request $request)
     {
-        Auth::logout(); // Log out the user
+        Auth::logout();
 
-        $request->session()->invalidate(); // Invalidate the session
+        $request->session()->invalidate();
 
-        $request->session()->regenerateToken(); // Regenerate CSRF token
+        $request->session()->regenerateToken(); 
 
-        return Redirect::route('welcome'); // Redirect to the welcome page
+        return Redirect::route('welcome'); 
     }
 }

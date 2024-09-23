@@ -16,11 +16,11 @@ class EventController extends Controller
         return view('events.create_event', compact('categories'));
     }
 
-    public function explore()
+    public function explore(Request $request)
     {
-        return view('events.explore_events');
+        $events = Event::all();
+        return view('explore_events', compact('events'));
     }
-
 
     public function store(Request $request)
     {
@@ -91,6 +91,29 @@ class EventController extends Controller
         $events = Event::all();
         return view('events.index', compact('events'));
     }
+
+    //come back to this logic.
+    public function search(Request $request)
+    {
+        $query = Event::query();
+
+        if ($request->filled('event_name')) {
+            $query->where('name', 'like', '%' . $request->event_name . '%');
+        }
+
+        if ($request->filled('suburb')) {
+            $query->where('suburb', $request->suburb);
+        }
+
+        if ($request->filled('date')) {
+            $query->whereDate('date_time', $request->date);
+        }
+
+        $events = $query->get();
+
+        return view('explore_events', compact('events'));
+    }
+
 }
 
 

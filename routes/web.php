@@ -18,7 +18,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Public event viewing routes (accessible without authentication)
 Route::get('/events', [EventController::class, 'showEvents'])->name('events.index');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
-Route::get('/events/explore', [EventController::class, 'explore'])->name('events.explore_events');
+Route::get('/explore_events', [EventController::class, 'explore'])->name('explore_events');
+Route::get('/events/explore', [EventController::class, 'search'])->name('explore_events');
 
 Route::get('/about', function () {
     return view('about');})->name('about');

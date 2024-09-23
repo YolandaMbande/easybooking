@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout class="bg-pink-200 p-6 rounded-lg">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -8,19 +8,14 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full focus:ring-2 focus:ring-bright-pink" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
+            <x-text-input id="password" class="block mt-1 w-full focus:ring-2 focus:ring-bright-pink" type="password" name="password" required autocomplete="current-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -44,4 +39,12 @@
             </x-primary-button>
         </div>
     </form>
+    
 </x-guest-layout>
+
+<style>
+    .focus\:ring-bright-pink:focus {
+        ring-color: #FF007F; 
+    }
+</style>
+
