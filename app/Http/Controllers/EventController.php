@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -9,19 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-   
+
     public function create()
     {
         $categories = Category::all();
         return view('events.create_event', compact('categories'));
     }
 
-    public function explore(Request $request)
+    // Explore events (all events)
+    public function explore()
     {
         $events = Event::all();
-        return view('explore_events', compact('events'));
+        return view('explore_events', compact('events'));  // Path updated after file move
     }
 
+    // Store event logic
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -45,7 +47,7 @@ class EventController extends Controller
         return redirect()->route('dashboard')->with('success', 'Event created successfully!');
     }
 
-    // Destroy event
+    // Destroy event logic
     public function destroy(Event $event)
     {
 
@@ -57,13 +59,12 @@ class EventController extends Controller
         return redirect()->route('dashboard')->with('success', 'Event deleted successfully.');
     }
 
-
-    public function showEventsWelcomePage() {
-        $upcomingEvents = Event::where('status', 'upcoming')->get();
-        $completeEvents = Event::where('status', 'complete')->get();
-        $ongoingEvents = Event::where('status', 'ongoing')->get();
-
-        //dd($upcomingEvents, $completeEvents, $ongoingEvents);
+    // Show events on the welcome page
+    public function showEventsWelcomePage()
+    {
+        $upcomingEvents = Event::where('status', 'Upcoming')->get();
+        $completeEvents = Event::where('status', 'Completed')->get();
+        $ongoingEvents = Event::where('status', 'Ongoing')->get();
 
         return view('welcome', [
             'upcomingEvents' => $upcomingEvents,
@@ -79,40 +80,41 @@ class EventController extends Controller
         return view('dashboard', compact('events'));
     }
 
-
+    // Show a specific event
     public function show($id)
     {
         $event = Event::findOrFail($id);
         return view('events.show', compact('event'));
     }
 
+    // Show all events
     public function showEvents()
     {
         $events = Event::all();
         return view('events.index', compact('events'));
     }
 
-    //come back to this logic.
+    // Search for events - come back to this logic.
     public function search(Request $request)
     {
         $query = Event::query();
-
+    
         if ($request->filled('event_name')) {
             $query->where('name', 'like', '%' . $request->event_name . '%');
         }
-
+    
         if ($request->filled('suburb')) {
-            $query->where('suburb', $request->suburb);
+            $query->where('location', 'like', '%' . $request->suburb . '%');
         }
-
+    
         if ($request->filled('date')) {
             $query->whereDate('date_time', $request->date);
         }
-
+    
         $events = $query->get();
-
+    
         return view('explore_events', compact('events'));
-    }
+    }    
 
 }
 

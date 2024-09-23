@@ -19,11 +19,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/events', [EventController::class, 'showEvents'])->name('events.index');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 Route::get('/explore_events', [EventController::class, 'explore'])->name('explore_events');
-Route::get('/events/explore', [EventController::class, 'search'])->name('explore_events');
+Route::get('/explore', [EventController::class, 'search'])->name('events.search');
 
 Route::get('/about', function () {
-    return view('about');})->name('about');
-
+    return view('about');
+})->name('about');
 
 // Authentication routes
 Auth::routes();
@@ -37,9 +37,9 @@ Route::middleware('auth')->group(function () {
 
 // Organizer routes (restricted to organizers)
 Route::middleware(['auth', 'role:organizer'])->group(function () {
-    //creates the event
-    Route::get('/events', [EventController::class, 'create'])->name('events.create');
-   //saves them
+    // Creates the event
+    Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+    // Saves the event
     Route::post('/events', [EventController::class, 'store'])->name('events.store');
 });
 

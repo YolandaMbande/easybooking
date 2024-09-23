@@ -24,15 +24,20 @@
                         <label for="date" class="block text-black">Date</label>
                         <input type="date" id="date" name="date" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500">
                     </div>
-                    
-                    <div class="mt-6 flex justify-center gap-4">
-                        <button type="submit" class="bg-yellow-500 text-black px-4 py-2 rounded-md hover:bg-yellow-400">Find Events</button>
-                        <button type="button" id="clear-button" class="bg-transparent border-2 border-white text-white px-4 py-2 rounded-md hover:bg-white hover:text-black">Clear</button>
+
+                    <div class="mt-6 flex justify-center gap-4 col-span-3">
+                        <button type="submit" class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-purple-500">
+                            Find Events
+                        </button>
+                        <button type="button" id="clear-button" class="bg-transparent border-2 border-white text-white px-4 py-2 rounded-md hover:bg-white hover:text-black">
+                            Clear
+                        </button>
                     </div>
                 </form>
             </main>
 
-            <div class="mt-10">
+            <!-- Display Events or No Events Found Message -->
+            <div class="mt-10 w-full max-w-3xl">
                 @if(request()->query('event_name') || request()->query('suburb') || request()->query('date'))
                     @if($events->isEmpty())
                         <p class="text-center text-white">No events found for the given criteria.</p>
@@ -57,4 +62,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Script for Clearing the Form -->
+    <script>
+        document.getElementById('clear-button').addEventListener('click', function() {
+            document.getElementById('event_name').value = '';
+            document.getElementById('suburb').value = '';
+            document.getElementById('date').value = '';
+        });
+    </script>
 @endsection
