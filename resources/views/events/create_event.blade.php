@@ -39,10 +39,9 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900 dark:text-gray-100">
-                            <form method="POST" action="{{ route('events.store') }}">
+                            <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
                                 @csrf
 
-                                <!-- Event Name -->
                                 <div>
                                     <x-input-label for="name" :value="__('Event Name')" />
                                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
@@ -54,6 +53,13 @@
                                     <x-input-label for="description" :value="__('Description')" />
                                     <textarea id="description" class="block mt-1 w-full" name="description" required></textarea>
                                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                                </div>
+
+                                <!-- Event Image Upload -->
+                                <div class="mt-4">
+                                    <x-input-label for="image" :value="__('Event Image')" />
+                                    <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" required />
+                                    <x-input-error :messages="$errors->get('image')" class="mt-2" />
                                 </div>
 
                                 <!-- Event Location (with autocomplete) -->

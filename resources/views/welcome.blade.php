@@ -24,7 +24,6 @@
             }
         </style>
 
-
         <main class="relative z-10">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -35,6 +34,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 @foreach ($upcomingEvents as $event)
                                     <div class="bg-pink-200 dark:bg-pink-700 rounded-lg shadow-lg p-4 border border-pink-300 dark:border-pink-600 flex flex-col justify-between relative aspect-square">
+                                        <img src="{{ asset('images/events/' . $event->image) }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2"> <!-- Add your image here -->
                                         <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
                                             {{ $event->title }}
                                         </a>
@@ -54,6 +54,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 @foreach ($completeEvents as $event)
                                     <div class="bg-pink-200 dark:bg-pink-700 rounded-lg shadow-lg p-4 border border-pink-300 dark:border-pink-600 flex flex-col justify-between relative aspect-square">
+                                        <img src="{{ asset('images/events/' . $event->image) }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2"> <!-- Add your image here -->
                                         <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
                                             {{ $event->title }}
                                         </a>
@@ -73,6 +74,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 @foreach ($ongoingEvents as $event)
                                     <div class="bg-pink-200 dark:bg-pink-700 rounded-lg shadow-lg p-4 border border-pink-300 dark:border-pink-600 flex flex-col justify-between relative aspect-square">
+                                        <img src="{{ asset('images/events/' . $event->image) }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2"> <!-- Add your image here -->
                                         <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
                                             {{ $event->title }}
                                         </a>

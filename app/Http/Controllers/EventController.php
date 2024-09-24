@@ -20,7 +20,7 @@ class EventController extends Controller
     public function explore()
     {
         $events = Event::all();
-        return view('explore_events', compact('events'));  // Path updated after file move
+        return view('explore_events', compact('events')); 
     }
 
     // Store event logic
@@ -38,9 +38,16 @@ class EventController extends Controller
             'ticket_price' => 'required|numeric|min:0',
             'status' => 'required|string|in:Upcoming,Ongoing,Completed',
             'visibility' => 'required|string|in:Public,Private',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
         $validatedData['organizer_id'] = auth()->user()->id;
+
+        // Handle the image upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('event_images', 'public'); // Store image in 'public/event_images'
+            $validatedData['image'] = $imagePath; // Save image path in validated data
+        }
 
         Event::create($validatedData);
 
@@ -50,9 +57,13 @@ class EventController extends Controller
     // Destroy event logic
     public function destroy(Event $event)
     {
-
         if ($event->organizer_id !== auth()->id()) {
             return redirect()->route('dashboard')->with('error', 'Unauthorized action.');
+        }
+
+        // Optionally delete the event image if it exists
+        if ($event->image) {
+            Storage::disk('public')->delete($event->image);
         }
 
         $event->delete();
@@ -94,7 +105,7 @@ class EventController extends Controller
         return view('events.index', compact('events'));
     }
 
-    // Search for events - come back to this logic.
+    // Search for events
     public function search(Request $request)
     {
         $query = Event::query();

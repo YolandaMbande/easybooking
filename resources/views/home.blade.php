@@ -33,7 +33,8 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @foreach ($events as $event)
                                 <div class="bg-pink-200 dark:bg-pink-700 rounded-lg shadow-lg p-4 border border-pink-300 dark:border-pink-600 flex flex-col justify-between relative aspect-square">
-                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                                    <img src="{{ asset('images/events/' . $event->image) }}" alt="{{ $event->name }}" class="w-full h-32 object-cover rounded-t-lg">
+                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2 mt-2">
                                         {{ $event->name }}
                                     </a>
                                     <span class="block text-gray-600 dark:text-gray-400 text-sm">

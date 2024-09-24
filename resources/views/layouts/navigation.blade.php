@@ -24,7 +24,7 @@
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white hover:text-pink-500">
                             {{ __('Dashboard') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('events.create')" :active="request()->routeIs('events.create')" class="text-white hover:text-pink-500">
+                        <x-nav-link :href="route('events.create_event')" :active="request()->routeIs('events.create_event')" class="text-white hover:text-pink-500">
                             {{ __('Create Event') }}
                         </x-nav-link>
                     @endif
@@ -55,6 +55,7 @@
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
+                        
                     </x-dropdown>
                 @else
                     <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="text-lg font-bold text-white hover:text-pink-500">
@@ -84,7 +85,7 @@
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-pink-500 hover:text-white">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('events.create')" :active="request()->routeIs('events.create')" class="text-pink-500 hover:text-white">
+                <x-responsive-nav-link :href="route('events.create_event')" :active="request()->routeIs('events.create_event')" class="text-pink-500 hover:text-white">
                     {{ __('Create Event') }}
                 </x-responsive-nav-link>
             @endif

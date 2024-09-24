@@ -26,11 +26,17 @@ Route::get('/about', function () {
 })->name('about');
 
 // Authentication routes
-Auth::routes();
+Auth::routes(['verify' => true]); // Enable verification
 
-// Profile routes (for logged-in users)
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::middleware(['auth', 'verified'])->group(function () { 
+    Route::get('/profile', function () {
+        if (auth()->user()->hasVerifiedEmail()) {
+            return view('profile.edit');
+        } else {
+            return view('auth.verify-email-notice');
+        }
+    })->middleware('auth')->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -38,7 +44,7 @@ Route::middleware('auth')->group(function () {
 // Organizer routes (restricted to organizers)
 Route::middleware(['auth', 'role:organizer'])->group(function () {
     // Creates the event
-    Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+    Route::get('/events/create', [EventController::class, 'create'])->name('events.create_event');
     // Saves the event
     Route::post('/events', [EventController::class, 'store'])->name('events.store');
 });
@@ -62,3 +68,19 @@ Route::get('/payment/cancel', [PaymentController::class, 'paymentCancel'])->name
 
 // Logout route
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+// Email verification routes (no need for a custom controller)
+Route::middleware('auth')->group(function() {
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('throttle:6,1')->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', [\App\Http\Controllers\Auth\VerifyEmailController::class, '__invoke'])
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
+
+    Route::post('/email/verification-notification', function () {
+        auth()->user()->sendEmailVerificationNotification();
+        return back()->with('status', 'verification-link-sent');
+    })->middleware('throttle:6,1')->name('verification.send');
+});
