@@ -12,8 +12,14 @@ class EventController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view('events.create_event', compact('categories'));
+        try {
+            \Log::info('Create Event page is being accessed');
+            $categories = Category::all();
+            return view('events.create_event', compact('categories'));
+        } catch (\Exception $e) {
+            \Log::error('Error accessing create event page: ' . $e->getMessage());
+            return redirect()->route('dashboard')->with('error', 'An error occurred.');
+        }
     }
 
     // Explore events (all events)
@@ -43,10 +49,9 @@ class EventController extends Controller
 
         $validatedData['organizer_id'] = auth()->user()->id;
 
-        // Handle the image upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('event_images', 'public'); // Store image in 'public/event_images'
-            $validatedData['image'] = $imagePath; // Save image path in validated data
+            $imagePath = $request->file('image')->store('event_images', 'public'); 
+            $validatedData['image'] = $imagePath;
         }
 
         Event::create($validatedData);
@@ -61,7 +66,7 @@ class EventController extends Controller
             return redirect()->route('dashboard')->with('error', 'Unauthorized action.');
         }
 
-        // Optionally delete the event image if it exists
+        
         if ($event->image) {
             Storage::disk('public')->delete($event->image);
         }

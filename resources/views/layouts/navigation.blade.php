@@ -9,7 +9,9 @@
                 </div>
 
                 <div class="text-xl font-semibold text-white">
+                    <a href="{{route('welcome')}}">
                     Easy Booking
+                    </a>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

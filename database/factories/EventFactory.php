@@ -4,7 +4,9 @@ namespace Database\Factories;
 
 use App\Models\Event;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Carbon\Carbon; 
 
 class EventFactory extends Factory
 {
@@ -32,7 +34,8 @@ class EventFactory extends Factory
             'ticket_price' => $this->faker->randomFloat(2, 50, 500),
             'status' => $this->faker->randomElement($statuses),
             'visibility' => $this->faker->randomElement($visibilityOptions),
-            'image' => $this->faker->imageUrl(640, 480, 'events'), 
+            'image' => $this->faker->imageUrl(640, 480, 'events'),
+            'organizer_id' => User::all()->random()->id,  
         ];
     }
 }

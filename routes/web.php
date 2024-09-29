@@ -41,6 +41,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Dashboard (for logged-in users)
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+
 // Organizer routes (restricted to organizers)
 Route::middleware(['auth', 'role:organizer'])->group(function () {
     // Creates the event
@@ -56,8 +59,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 });
 
-// Dashboard (for logged-in users)
-Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
 // Payments route
 Route::get('/payment/{booking}', [PaymentController::class, 'show'])->name('payment.show');
