@@ -26,12 +26,14 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: 'public/build',  // Ensure output directory is correct
-        manifest: true,          // Generate the manifest.json
+        outDir: 'public/build',  // Ensures output goes to public/build
+        manifest: true,          // Enable manifest.json generation
         rollupOptions: {
-            input: {
-                app: 'resources/js/app.js',  // Main JS file for the app
-            },
-        },
+          output: {
+            entryFileNames: 'assets/[name]-[hash].js', // Organizes files in assets/
+            chunkFileNames: 'assets/[name]-[hash].js',
+            assetFileNames: 'assets/[name]-[hash].[ext]'
+          }
+        }
     },
 });
