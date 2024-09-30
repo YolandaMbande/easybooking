@@ -6,8 +6,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/sass/app.scss',
-                'resources/js/app.js',
+                'resources/sass/app.scss',  // SCSS file
+                'resources/js/app.js',      // Main JS file
             ],
             refresh: true,
         }),
@@ -22,7 +22,16 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            vue: 'vue/dist/vue.esm-bundler.js',
+            vue: 'vue/dist/vue.esm-bundler.js',  // Alias for Vue
+        },
+    },
+    build: {
+        outDir: 'public/build',  // Specify output directory for production build
+        manifest: true,          // Ensure manifest.json is generated
+        rollupOptions: {
+            input: {
+                app: 'resources/js/app.js',  // Input for the main app
+            },
         },
     },
 });
