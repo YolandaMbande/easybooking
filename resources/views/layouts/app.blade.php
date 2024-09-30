@@ -12,8 +12,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="//unpkg.com/alpinejs" defer></script>
 
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+        @vite(['resources/css/app.scss', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
