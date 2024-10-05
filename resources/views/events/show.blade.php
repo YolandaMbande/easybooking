@@ -4,7 +4,7 @@
     <div class="relative overflow-hidden min-h-screen flex flex-col"> 
         <!-- Background Image with Blur -->
         <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpeg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
         </div>
 
         <main class="relative z-10 flex-grow">

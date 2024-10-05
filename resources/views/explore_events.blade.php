@@ -3,7 +3,7 @@
 @section('content')
     <div class="relative overflow-hidden min-h-screen flex flex-col">
         <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpeg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
         </div>
 
         <div class="relative z-10 flex flex-col justify-center items-center min-h-screen bg-black bg-opacity-50 text-white">
@@ -11,17 +11,17 @@
             <main class="mt-10 w-full max-w-3xl">
                 <form method="GET" action="{{ route('explore_events') }}" class="grid grid-cols-1 gap-6 md:grid-cols-3">
                     <div>
-                        <label for="event_name" class="block text-black">Search Event Name or Venue</label>
+                        <label for="event_name" class="block text-white">Search Event Name or Venue</label>
                         <input type="text" id="event_name" name="event_name" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500" placeholder="Enter event name or venue">
                     </div>
 
                     <div>
-                        <label for="suburb" class="block text-black">Suburb/Postcode</label>
+                        <label for="suburb" class="block text-white">Suburb/Postcode</label>
                         <input type="text" id="suburb" name="suburb" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500" placeholder="Enter suburb or postcode">
                     </div>
 
                     <div>
-                        <label for="date" class="block text-black">Date</label>
+                        <label for="date" class="block text-white">Date</label>
                         <input type="date" id="date" name="date" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500">
                     </div>
 
@@ -44,11 +44,11 @@
                     @else
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                             @foreach ($events as $event)
-                                <div class="bg-pink-200 dark:bg-pink-700 rounded-lg shadow-lg p-4">
-                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                                <div class="bg-gray-800 rounded-lg shadow-lg p-4">
+                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
                                         {{ $event->name }}
                                     </a>
-                                    <span class="block text-gray-600 dark:text-gray-400 text-sm">
+                                    <span class="block text-gray-300 text-sm">
                                         @php
                                             $date = \Carbon\Carbon::parse($event->date_time);
                                         @endphp

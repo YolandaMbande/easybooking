@@ -4,12 +4,12 @@
     <main class="relative overflow-hidden flex items-center justify-center min-h-screen">
         <!-- Background Image with Blur -->
         <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpeg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
         </div>
 
         <!-- Floating Caption -->
         <div class="absolute top-10 left-1/2 transform -translate-x-1/2 z-20 text-center">
-            <p class="text-4xl font-semibold text-gray-700 dark:text-gray-300">
+            <p class="text-4xl font-semibold text-white dark:text-gray-300">
                 Thank you for booking with us, please state the number of tickets you want to book:
             </p>
         </div>

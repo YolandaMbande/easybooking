@@ -4,7 +4,7 @@
     <main class="relative overflow-hidden flex items-center justify-center min-h-screen">
         <!-- Background Image with Blur -->
         <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpeg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
         </div>
 
         <div class="relative z-10 max-w-4xl w-full bg-white p-20 rounded-lg shadow-md space-y-6"> <!-- Increased padding and width -->
@@ -27,10 +27,11 @@
                 <input type="hidden" name="email_address" value="{{ $paymentData['email_address'] }}">
 
                 <div>
-                    <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out">
+                    <button type="submit" class="w-full flex justify-center py-2 px-4 border border-pink-600 text-sm font-medium rounded-md text-pink-600 bg-white hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition duration-300 ease-in-out">
                         Pay Now
                     </button>
                 </div>
+
             </form>
         </div>
     </main>

@@ -12,14 +12,10 @@ class EventController extends Controller
 
     public function create()
     {
-        try {
-            \Log::info('Create Event page is being accessed');
-            $categories = Category::all();
-            return view('events.create_event', compact('categories'));
-        } catch (\Exception $e) {
-            \Log::error('Error accessing create event page: ' . $e->getMessage());
-            return redirect()->route('dashboard')->with('error', 'An error occurred.');
-        }
+
+        $categories = Category::all();
+        return view('events.create_event', compact('categories'));
+        
     }
 
     // Explore events (all events)

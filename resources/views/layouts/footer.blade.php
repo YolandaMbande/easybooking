@@ -10,7 +10,7 @@
                     <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
                     <li><a href="/explore" class="text-gray-400 hover:text-white">Explore Events</a></li>
                     <li><a href="/about" class="text-gray-400 hover:text-white">About Us</a></li>
-                    <li><a href="/contact" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                    <li><a href="{{ route('contact.show') }}" class="text-gray-400 hover:text-white">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -18,7 +18,7 @@
             <div>
                 <h3 class="font-bold text-lg mb-4">Contact Us</h3>
                 <p class="text-gray-400">Email: support@easybooking.com</p>
-                <p class="text-gray-400">Phone: +27 123 456 7890</p>
+                <p class="text-gray-400">Phone: +27 065 711 0159</p>
                 <p class="text-gray-400">Address: 123 Event St, Gauteng, South Africa</p>
             </div>
 

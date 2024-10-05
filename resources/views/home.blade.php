@@ -4,7 +4,7 @@
     <div class="relative overflow-hidden min-h-screen flex flex-col">
         
         <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpeg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
         </div>
 
         <div class="relative z-10 text-center mb-6">
@@ -18,8 +18,8 @@
                 text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1),
                             0 4px 6px rgba(0, 0, 0, 0.1),
                             0 6px 12px rgba(0, 0, 0, 0.1);
-                font-family: 'Baloo', cursive; 
-                color: #c2185b; 
+                font-family: 'Baloo'; 
+                color: #e5e5e5; 
                 padding: 10px;
             }
         </style>
@@ -32,12 +32,12 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @foreach ($events as $event)
-                                <div class="bg-pink-200 dark:bg-pink-700 rounded-lg shadow-lg p-4 border border-pink-300 dark:border-pink-600 flex flex-col justify-between relative aspect-square">
-                                    <img src="{{ asset('images/events/' . $event->image) }}" alt="{{ $event->name }}" class="w-full h-32 object-cover rounded-t-lg">
-                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2 mt-2">
+                                <div class="bg-gray-800 rounded-lg shadow-lg p-4 border border-gray-600 flex flex-col justify-between relative aspect-square">
+                                <img src="{{ $event->image }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
+                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2 mt-2">
                                         {{ $event->name }}
                                     </a>
-                                    <span class="block text-gray-600 dark:text-gray-400 text-sm">
+                                    <span class="block text-gray-300 text-sm">
                                         @php
                                             $date = \Carbon\Carbon::parse($event->date_time);
                                         @endphp
