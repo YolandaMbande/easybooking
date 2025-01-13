@@ -16,7 +16,8 @@ Route::get('/', [EventController::class, 'showEventsWelcomePage'])->name('welcom
 // Public routes
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Public event viewing routes (accessible without authentication)
 Route::get('/events', [EventController::class, 'showEvents'])->name('events.index');
@@ -47,13 +48,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Dashboard (for logged-in users)
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
-// Organizer routes (restricted to organizers)
-Route::middleware(['auth', 'role:organizer'])->group(function () {
     // Creates the event
-    Route::get('/events/create', [EventController::class, 'create'])->name('events.create_event');
+    Route::get('/events/create_event', [EventController::class, 'create'])->name('events.create_event');
     // Saves the event
     Route::post('/events', [EventController::class, 'store'])->name('events.store');
-});
+
 
 // Event booking routes (authenticated users)
 Route::middleware('auth')->group(function () {

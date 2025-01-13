@@ -12,7 +12,6 @@ class EventController extends Controller
 
     public function create()
     {
-
         $categories = Category::all();
         return view('events.create_event', compact('categories'));
         

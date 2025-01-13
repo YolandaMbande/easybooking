@@ -75,27 +75,8 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 @foreach ($upcomingEvents as $event)
                                 <div class="bg-gray-800 dark:bg-gray-900  shadow-lg p-4 border border-gray-600 dark:border-gray-700 flex flex-col justify-between relative aspect-square">
-                                    <img src="{{ $event->image }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
-                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
-                                        {{ $event->title }}
-                                    </a>
-                                    <span class="block text-gray-300 dark:text-gray-400 text-sm">
-                                        {{ \Carbon\Carbon::parse($event->date_time)->format('F j, Y, g:i a') }}
-                                    </span>
-                                    <!-- Event description -->
-                                    <p class="mt-2 text-gray-300 dark:text-gray-400 text-sm">
-                                        {{ $event->description }}
-                                    </p>
-                                </div>
-                                @endforeach
-                            </div>
+                                <img src="https://images.unsplash.com/photo-1542201454-48c9943e99c5" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
 
-                            <!-- Complete Events Section -->
-                            <h3 class="text-2xl font-bold mb-6 text-center mt-10">{{ __('Complete Events') }}</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                @foreach ($completeEvents as $event)
-                                <div class="bg-gray-800 dark:bg-gray-900 shadow-lg p-4 border border-gray-600 dark:border-gray-700 flex flex-col justify-between relative aspect-square">
-                                    <img src="{{ $event->image }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2"> <!-- Add your image here -->
                                     <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
                                         {{ $event->title }}
                                     </a>

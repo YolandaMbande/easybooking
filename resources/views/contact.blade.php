@@ -12,7 +12,7 @@
                 <h1 class="text-4xl font-bold mb-4 text-center text-white">Contact Us</h1>
                 <p class="mb-4 text-center text-gray-300">We would love to hear from you! Please fill out the form below:</p>
                 
-                <form action="#" method="POST" class="bg-gray-100 dark:bg-gray-700 shadow-lg rounded-lg p-6">
+                <form action="{{ route('contact.store') }}" method="POST" class="bg-gray-100 dark:bg-gray-700 shadow-lg rounded-lg p-6">
                     @csrf <!-- CSRF token for security -->
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>

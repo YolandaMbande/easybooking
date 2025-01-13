@@ -1,4 +1,8 @@
 <x-guest-layout>
+
+<div class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('{{ asset('images/register_background.jpg') }}');">
+<div class="bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-lg p-8 w-full max-w-md">
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
