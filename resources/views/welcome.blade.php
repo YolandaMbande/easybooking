@@ -96,7 +96,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 @foreach ($ongoingEvents as $event)
                                 <div class="bg-gray-800 dark:bg-gray-900 shadow-lg p-4 border border-gray-600 dark:border-gray-700 flex flex-col justify-between relative aspect-square">
-                                    <img src="{{ $event->image }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2"> <!-- Add your image here -->
+                                    <img src="{{ '$event->image' }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2"> <!-- Add your image here -->
                                     <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
                                         {{ $event->title }}
                                     </a>

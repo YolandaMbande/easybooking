@@ -33,7 +33,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @foreach ($events as $event)
                                 <div class="bg-gray-800 rounded-lg shadow-lg p-4 border border-gray-600 flex flex-col justify-between relative aspect-square">
-                                <img src="{{ asset('images/create-event.webp') }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
+                                <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
                                     <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2 mt-2">
                                         {{ $event->name }}
                                     </a>
