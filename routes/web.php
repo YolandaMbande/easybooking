@@ -20,9 +20,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Public event viewing routes (accessible without authentication)
+Route::view('/explore_events', 'explore_events')->name('explore_events');
 Route::get('/events', [EventController::class, 'showEvents'])->name('events.index');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
-Route::get('/explore_events', [EventController::class, 'explore'])->name('explore_events');
 Route::get('/explore', [EventController::class, 'search'])->name('events.search');
 
 Route::get('/about', function () {

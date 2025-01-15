@@ -9,7 +9,7 @@
         <div class="relative z-10 flex flex-col justify-center items-center min-h-screen bg-black bg-opacity-50 text-white">
             <h1 class="text-4xl font-bold">Find an event & buy tickets</h1>
             <main class="mt-10 w-full max-w-3xl">
-                <form method="GET" action="{{ route('explore_events') }}" class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <form method="GET" action="{{ route('events.search') }}" class="grid grid-cols-1 gap-6 md:grid-cols-3">
                     <div>
                         <label for="event_name" class="block text-white">Search Event Name or Venue</label>
                         <input type="text" id="event_name" name="event_name" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500" placeholder="Enter event name or venue">
@@ -35,7 +35,7 @@
                     </div>
                 </form>
             </main>
-
+ 
             <!-- Display Events or No Events Found Message -->
             <div class="mt-10 w-full max-w-3xl">
                 @if(request()->query('event_name') || request()->query('suburb') || request()->query('date'))
