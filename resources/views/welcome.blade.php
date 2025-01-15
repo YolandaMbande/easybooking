@@ -68,31 +68,35 @@
         <main class="relative z-10">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white dark:bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-grey dark:bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900 dark:text-gray-100">
                             <!-- Upcoming Events Section -->
-                            <h3 class="text-2xl font-bold mb-6 text-center">{{ __('Upcoming Events') }}</h3>
+                            <h3 class="text-5xl font-bold mb-6 text-center text-white">{{ __('Coming Events') }}</h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                @foreach ($upcomingEvents as $event)
-                                <div class="bg-gray-800 dark:bg-gray-900  shadow-lg p-4 border border-gray-600 dark:border-gray-700 flex flex-col justify-between relative aspect-square">
-                                <img src="https://images.unsplash.com/photo-1542201454-48c9943e99c5" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
-
-                                    <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
-                                        {{ $event->title }}
-                                    </a>
-                                    <span class="block text-gray-300 dark:text-gray-400 text-sm">
-                                        {{ \Carbon\Carbon::parse($event->date_time)->format('F j, Y, g:i a') }}
-                                    </span>
-                                    <!-- Event description -->
-                                    <p class="mt-2 text-gray-300 dark:text-gray-400 text-sm">
-                                        {{ $event->description }}
-                                    </p>
-                                </div>
-                                @endforeach
+                                @forelse ($upcomingEvents as $event)
+                                    @if (\Carbon\Carbon::parse($event->date_time)->isFuture())
+                                        <div class="bg-gray-800 dark:bg-gray-900 shadow-lg p-4 border border-gray-600 dark:border-gray-700 flex flex-col justify-between relative aspect-square">
+                                            <img src="https://images.unsplash.com/photo-1542201454-48c9943e99c5" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
+                                            
+                                            <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
+                                                {{ $event->title }}
+                                            </a>
+                                            <span class="block text-gray-300 dark:text-gray-400 text-sm">
+                                                {{ \Carbon\Carbon::parse($event->date_time)->format('F j, Y, g:i a') }}
+                                            </span>
+                                            <!-- Event description -->
+                                            <p class="mt-2 text-gray-300 dark:text-gray-400 text-sm">
+                                                {{ $event->description }}
+                                            </p>
+                                        </div>
+                                    @endif
+                                @empty
+                                    <p class="text-center text-white">No upcoming events found.</p>
+                                @endforelse
                             </div>
 
                             <!-- Ongoing Events Section -->
-                            <h3 class="text-2xl font-bold mb-6 text-center mt-10">{{ __('Ongoing Events') }}</h3>
+                            <h3 class="text-5xl font-bold mb-6 text-center mt-10 text-white">{{ __('Ongoing Events') }}</h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 @foreach ($ongoingEvents as $event)
                                 <div class="bg-gray-800 dark:bg-gray-900 shadow-lg p-4 border border-gray-600 dark:border-gray-700 flex flex-col justify-between relative aspect-square">

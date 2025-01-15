@@ -75,7 +75,7 @@ class EventController extends Controller
     {
         $upcomingEvents = Event::where('status', 'Upcoming')->get();
         $completeEvents = Event::where('status', 'Completed')->get();
-        $ongoingEvents = Event::where('status', 'Ongoing')->get();
+        $ongoingEvents = Event::whereDate('date_time', '=', now()->toDateString())->get();
 
         return view('welcome', [
             'upcomingEvents' => $upcomingEvents,
@@ -108,6 +108,10 @@ class EventController extends Controller
     // Search for events
     public function search(Request $request)
     {
+        if (!$request->filled('event_name') && !$request->filled('suburb') && !$request->filled('date')) {
+            return redirect()->route('explore_events')->with('error', 'Please enter at least one search criterion.');
+        }
+
         $query = Event::query();
     
         if ($request->filled('event_name')) {
