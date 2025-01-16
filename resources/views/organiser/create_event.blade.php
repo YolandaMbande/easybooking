@@ -7,14 +7,14 @@
     <div class="relative overflow-hidden">
         <!-- Background Image with Blur -->
         <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpeg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
         </div>
 
         <div class="relative z-10 text-center mb-6">
             <h2 class="font-semibold text-3xl text-black dark:text-gray-400 leading-tight mb-2 bubble-text">
                 {{ __('Create Event') }}
             </h2>
-            <p class="text-gray-600 dark:text-gray-400 text-lg">
+            <p class="text-white dark:text-gray-400 text-lg">
                 Please fill out this form to create an event.
             </p>
         </div>
@@ -39,7 +39,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900 dark:text-gray-100">
-                            <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('organiser.store') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div>

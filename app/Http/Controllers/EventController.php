@@ -13,15 +13,8 @@ class EventController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('events.create_event', compact('categories'));
+        return view('organiser.create_event', compact('categories'));
         
-    }
-
-    // Explore events (all events)
-    public function explore()
-    {
-        $events = Event::all();
-        return view('explore_events', compact('events')); 
     }
 
     // Store event logic
@@ -31,8 +24,6 @@ class EventController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'location' => 'required|string|max:255',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
             'date_time' => 'required|date',
             'category_id' => 'required|exists:categories,id',
             'max_attendees' => 'required|integer|min:1',
@@ -45,13 +36,17 @@ class EventController extends Controller
         $validatedData['organizer_id'] = auth()->user()->id;
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('event_images', 'public'); 
+            $imagePath = $request->file('image')->store('public/images'); 
             $validatedData['image'] = $imagePath;
         }
 
-        Event::create($validatedData);
-
-        return redirect()->route('dashboard')->with('success', 'Event created successfully!');
+        try {
+            Event::create($validatedData);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+        
+        return redirect()->route('organiser.create_event')->with('success', 'Event created successfully!');
     }
 
     // Destroy event logic

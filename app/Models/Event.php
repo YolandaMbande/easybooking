@@ -27,6 +27,7 @@ class Event extends Model
         'visibility',
         'image',
     ];
+    
 
     public function bookings()
     {
