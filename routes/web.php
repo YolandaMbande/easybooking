@@ -48,11 +48,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Dashboard (for logged-in users)
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
-    // Creates the event
-    Route::get('/events/create_event', [EventController::class, 'create'])->name('events.create_event');
-    // Saves the event
-    Route::post('/events', [EventController::class, 'store'])->name('events.store');
-
+//Creating an event
+Route::prefix('organiser')->name('organiser.')->group(function () {
+    Route::get('create', [EventController::class, 'create'])->name('create_event');
+    Route::post('store', [EventController::class, 'store'])->name('store');
+});
 
 // Event booking routes (authenticated users)
 Route::middleware('auth')->group(function () {

@@ -26,7 +26,7 @@
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white hover:text-gray-400">
                             {{ __('Dashboard') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('events.create_event')" :active="request()->routeIs('events.create_event')" class="text-white hover:text-gray-400">
+                        <x-nav-link :href="route('organiser.create_event')" :active="request()->routeIs('organiser.create_event')" class="text-white hover:text-gray-400">
                             {{ __('Create Event') }}
                         </x-nav-link>
                     @endif
@@ -87,7 +87,7 @@
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-gray-400 hover:text-white">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('events.create_event')" :active="request()->routeIs('events.create_event')" class="text-gray-400 hover:text-white">
+                <x-responsive-nav-link :href="route('organiser.create_event')" :active="request()->routeIs('organiser.create_event')" class="text-gray-400 hover:text-white">
                     {{ __('Create Event') }}
                 </x-responsive-nav-link>
             @endif
