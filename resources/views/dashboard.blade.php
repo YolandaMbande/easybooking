@@ -2,6 +2,17 @@
 
 @section('content')
     <div class="relative overflow-hidden">
+        <!-- Display Session Messages -->
+        @if(session('success'))
+            <div class="bg-green-500 text-white text-center py-2 px-4 rounded mb-4 max-w-7xl mx-auto">
+                {{ session('success') }}
+            </div>
+        @elseif(session('error'))
+            <div class="bg-red-500 text-white text-center py-2 px-4 rounded mb-4 max-w-7xl mx-auto">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <!-- Background Image with Blur -->
         <div class="absolute inset-0">
             <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">

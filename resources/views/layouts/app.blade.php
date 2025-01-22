@@ -35,5 +35,32 @@
 
             @include('layouts.footer')
         </div>
+        <!-- Scroll to Top Button -->
+        <button id="scrollToTopButton" class="fixed bottom-5 right-5 bg-navy text-white px-4 py-2 rounded-full shadow-md hidden">
+            ↑ Top
+        </button>
     </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const scrollToTopButton = document.getElementById('scrollToTopButton');
+
+        // Show the button when the user scrolls down
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) { // Show button after 200px scroll
+                scrollToTopButton.classList.remove('hidden');
+            } else {
+                scrollToTopButton.classList.add('hidden');
+            }
+        });
+
+        // Smooth scroll to top when the button is clicked
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+

@@ -69,8 +69,8 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-grey dark:bg-pink-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <h3 class="text-5xl font-bold mb-6 text-center text-white">{{ __('Coming Events') }}</h3>
-
+                        <h3 class="text-6xl font-bold mb-6 text-center text-white">{{ __('Coming Events') }}</h3>
+                        <p class="text-center italic text-gray-200 text-xl">{{ __('Book now to secure your spot and experience unforgettable moments at our upcoming events! Don\'t miss out on amazing opportunities to connect and grow.') }}</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @foreach ($events as $event)
                                 <div class="bg-gray-800 rounded-lg shadow-lg p-4 border border-gray-600 flex flex-col justify-between relative aspect-square">
@@ -92,5 +92,65 @@
                 </div>
             </div>
         </main>
+
+        <div class="relative bg-gray-100 py-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">What Our Users Say!!❤️</h2>
+
+            <!-- Scrollable Reviews Section -->
+            <div class="overflow-x-auto">
+                <div class="flex space-x-4 px-6">
+                    <!-- Review 1 -->
+                    <div class="min-w-[300px] bg-white shadow-md p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Lungile Mkhize</h3>
+                        <p class="text-gray-600 mb-2">"The Galaxy K-Day event was incredible! The platform made booking so seamless."</p>
+                        <!-- Star Rating -->
+                        <div class="flex text-yellow-500">
+                            ★★★★☆
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="min-w-[300px] bg-white shadow-md p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Zikhona Ndlovu</h3>
+                        <p class="text-gray-600 mb-2">"I attended the Wine & Dine Festival. Everything was well-organized, and the notifications were super helpful."</p>
+                        <!-- Star Rating -->
+                        <div class="flex text-yellow-500">
+                            ★★★★★
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="min-w-[300px] bg-white shadow-md p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Anele Matshoba</h3>
+                        <p class="text-gray-600 mb-2">"The Music Vibes Night was such a vibe! I loved how easy it was to find and book the event on the platform."</p>
+                        <!-- Star Rating -->
+                        <div class="flex text-yellow-500">
+                            ★★★★☆
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="min-w-[300px] bg-white shadow-md p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Thando Qubeka</h3>
+                        <p class="text-gray-600 mb-2">"Thanks to this platform, I didn't miss the Digital Startups Summit. Everything went smoothly!"</p>
+                        <!-- Star Rating -->
+                        <div class="flex text-yellow-500">
+                            ★★★★☆
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="min-w-[300px] bg-white shadow-md p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Nomvula Ndlela</h3>
+                        <p class="text-gray-600 mb-2">"The Art & Creativity Workshop was inspiring! Booking tickets was so quick and easy."</p>
+                        <!-- Star Rating -->
+                        <div class="flex text-yellow-500">
+                            ★★★★★
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

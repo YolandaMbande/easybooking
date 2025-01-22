@@ -79,7 +79,7 @@
                                             <img src="{{ Storage::url($event->image) }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2">
                                             
                                             <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
-                                                {{ $event->title }}
+                                                {{ $event->name }}
                                             </a>
                                             <span class="block text-gray-300 dark:text-gray-400 text-sm">
                                                 {{ \Carbon\Carbon::parse($event->date_time)->format('F j, Y, g:i a') }}
@@ -100,9 +100,9 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 @foreach ($ongoingEvents as $event)
                                 <div class="bg-gray-800 dark:bg-gray-900 shadow-lg p-4 border border-gray-600 dark:border-gray-700 flex flex-col justify-between relative aspect-square">
-                                    <img src="{{ Storage::url($event->image) }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2"> <!-- Add your image here -->
+                                    <img src="{{ Storage::url($event->image) }}" alt="{{ $event->title }}" class="object-cover w-full h-32 rounded-lg mb-2 border-4 border-white"> <!-- Add your image here -->
                                     <a href="{{ route('events.show', $event->id) }}" class="block text-xl font-semibold text-white mb-2">
-                                        {{ $event->title }}
+                                        {{ $event->name }}
                                     </a>
                                     <span class="block text-gray-300 dark:text-gray-400 text-sm">
                                         {{ \Carbon\Carbon::parse($event->date_time)->format('F j, Y, g:i a') }}

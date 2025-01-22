@@ -6,6 +6,8 @@ use App\Models\Event;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class EventController extends Controller
 {
@@ -46,7 +48,7 @@ class EventController extends Controller
             dd($e->getMessage());
         }
         
-        return redirect()->route('organiser.create_event')->with('success', 'Event created successfully!');
+        return redirect()->route('dashboard')->with('success', 'Event created successfully!');
     }
 
     // Destroy event logic
@@ -56,9 +58,8 @@ class EventController extends Controller
             return redirect()->route('dashboard')->with('error', 'Unauthorized action.');
         }
 
-        
-        if ($event->image) {
-            Storage::disk('public')->delete($event->image);
+        if ($event->image && Storage::exists($event->image)) {
+            Storage::delete($event->image);
         }
 
         $event->delete();
