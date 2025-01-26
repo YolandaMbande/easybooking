@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment Canceled</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> <!-- Include Tailwind CSS -->
-</head>
-<body class="relative min-h-screen bg-gray-100">
+@extends('layouts.app')
+
+@section('content')
+   
+<main class="relative min-h-screen bg-gray-100">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/background.jpeg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+        <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
     </div>
     <div class="relative z-10 flex flex-col items-center justify-center min-h-screen">
         <h1 class="text-4xl font-bold text-pink-500 mb-4">Payment Canceled</h1>
@@ -20,6 +18,6 @@
             Go to your Dashboard
         </a>
     </div>
-</body>
-</html>
+</main>
+@endsection
 
