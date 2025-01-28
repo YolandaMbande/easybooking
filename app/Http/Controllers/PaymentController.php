@@ -24,9 +24,28 @@ class PaymentController extends Controller
             'email_address' => auth()->user()->email,
         ];
 
+    
         return view('payment.show', ['paymentData' => $paymentData, 'booking' => $booking]);
     }
 
+    public function processPayment(Request $request)
+    {
+        
+        $paymentData = [
+            'merchant_id' => env('MERCHANT_ID'),
+            'merchant_key' => env('MERCHANT_KEY'),
+            'amount' => $request->amount,
+            'item_name' => $request->item_name,
+            'return_url' => route('payment.return'),
+            'cancel_url' => route('payment.cancel'),
+            'notify_url' => route('payfast.callback'),
+            'name_first' => $request->name_first,
+            'name_last' => $request->name_last,
+            'email_address' => $request->email_address,
+        ];
+
+        return view('payment.process', ['paymentData' => $paymentData]);
+    }
 
     public function handlePayFastCallback(Request $request)
     {
@@ -39,11 +58,13 @@ class PaymentController extends Controller
 
     public function paymentReturn()
     {
-        return redirect()->route('dashboard')->with('success', 'Payment completed successfully!');
+        return redirect()->route('welcome')->with('success', 'Payment completed successfully!');
     }
 
-    public function paymentCancel()
+    public function paymentCancel($bookingId)
     {
-        return redirect()->route('payment.cancel')->with('error', 'Payment was canceled.');
+        $booking = Booking::findOrFail($bookingId);
+        return view('payment.cancel', compact('booking'));
     }
+
 }

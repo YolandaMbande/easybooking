@@ -12,9 +12,8 @@
             <p class="text-center text-lg text-gray-700">Booking for: <span class="font-semibold">{{ $booking->event->name }}</span></p>
             <p class="text-center text-lg text-gray-700">Amount: R<span class="font-semibold">{{ $paymentData['amount'] }}</span></p>
 
-            <form action="https://www.payfast.co.za/eng/process" method="post" class="space-y-4">
+            <form action="https://sandbox.payfast.co.za/eng/process" method="post" class="space-y-4">
                 @csrf
-
                 <input type="hidden" name="merchant_id" value="{{ $paymentData['merchant_id'] }}">
                 <input type="hidden" name="merchant_key" value="{{ $paymentData['merchant_key'] }}">
                 <input type="hidden" name="amount" value="{{ $paymentData['amount'] }}">
