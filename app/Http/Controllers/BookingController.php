@@ -22,20 +22,16 @@ class BookingController extends Controller
     {
         $event = Event::findOrFail($request->event_id);
 
-        // Validate request data
         $request->validate([
             'num_tickets' => 'required|integer|min:1',
         ]);
 
-        // Check if there are enough tickets available
         if ($event->max_attendees && $event->bookings()->sum('num_tickets') + $request->num_tickets > $event->max_attendees) {
             return back()->with('error', 'Not enough tickets available for this event.');
         }
 
-        // Calculate total price
         $totalPrice = $event->ticket_price * $request->num_tickets;
 
-        // Create booking
         $booking = Booking::create([
             'user_id' => Auth::id(),
             'event_id' => $event->id,
@@ -47,16 +43,16 @@ class BookingController extends Controller
         ]);
 
         // Send email to the attendee
-        $numTickets = $request->num_tickets;  // Get the number of tickets
+        $numTickets = $request->num_tickets;  
         Mail::to(Auth::user()->email)->send(new BookingConfirmation($event, Auth::user(), $numTickets));
 
-        // Send email to the organizer
+        
         $organizer = $event->organizer;
         if ($organizer) {
             Mail::to($organizer->email)->send(new OrganizerNotification($event, Auth::user(), $numTickets));
         }
 
-        // Redirect to payment page
+        
         return redirect()->route('payment.show', ['booking' => $booking->id]);
     }
 }

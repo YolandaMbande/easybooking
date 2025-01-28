@@ -12,17 +12,17 @@
                 <form method="GET" action="{{ route('events.search') }}" class="grid grid-cols-1 gap-6 md:grid-cols-3">
                     <div>
                         <label for="event_name" class="block text-white">Search Event Name or Venue</label>
-                        <input type="text" id="event_name" name="event_name" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500" placeholder="Enter event name or venue">
+                        <input type="text" id="event_name" name="event_name" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500 text-black" placeholder="Enter event name or venue">
                     </div>
 
                     <div>
                         <label for="suburb" class="block text-white">Suburb/Postcode</label>
-                        <input type="text" id="suburb" name="suburb" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500" placeholder="Enter suburb or postcode">
+                        <input type="text" id="suburb" name="suburb" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500 text-black" placeholder="Enter suburb or postcode">
                     </div>
 
                     <div>
                         <label for="date" class="block text-white">Date</label>
-                        <input type="date" id="date" name="date" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500">
+                        <input type="date" id="date" name="date" class="mt-1 block w-full px-3 py-2 rounded-md hover:border-pink-500 focus:border-pink-500 text-black">
                     </div>
 
                     <div class="mt-6 flex justify-center gap-4 col-span-3">

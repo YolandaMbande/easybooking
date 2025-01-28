@@ -12,8 +12,8 @@ class PaymentController extends Controller
         $booking = Booking::findOrFail($bookingId);
 
         $paymentData = [
-            'merchant_id' => env('PAYFAST_MERCHANT_ID'),
-            'merchant_key' => env('PAYFAST_MERCHANT_KEY'),
+            'merchant_id' => env('MERCHANT_ID'),
+            'merchant_key' => env('MERCHANT_KEY'),
             'amount' => number_format($booking->total_price, 2, '.', ''),
             'item_name' => 'Booking for event ' . $booking->event->name,
             'return_url' => route('payment.return'),
