@@ -117,51 +117,70 @@
 
                     <!-- Upcoming Events Section -->
 
-                    <h3 class="text-4xl font-bold mb-4 text-center text-red-500">
+                    <h3 class="text-6xl font-bold mb-4 text-center text-black bubble-text">
                         {{ __('Explore Exciting Events & Experiences') }}
                     </h3>
 
+                    <style>
+                        .bubble-text {
+                            text-shadow:
+                                0 2px 3px rgba(0, 0, 0, 0.1),
+                                0 4px 6px rgba(0, 0, 0, 0.1),
+                                0 6px 12px rgba(0, 0, 0, 0.1);
+                            font-family: 'Baloo';
+                            color: #151414;
+                            padding: 20px;
+                        }
+                    </style>
                     <p class="text-xl text-black mb-[180px] text-center">
                         Variety of Events to suit any taste
                     </p>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                         @forelse ($upcomingEvents as $event)
 
                             @if (\Carbon\Carbon::parse($event->date_time)->isFuture())
 
                             <!-- Event Card -->
-                            <div class="bg-white shadow-lg p-4 border border-gray-200 rounded-lg flex flex-col justify-between relative aspect-square">
+                        <div class="bg-white shadow-lg p-4 border border-gray-200 rounded-lg flex flex-col justify-between relative aspect-square">
+                        <div class="relative w-full">
 
-                                <img
-                                    src="{{ Storage::url($event->image) }}"
-                                    alt="{{ $event->title }}"
-                                    class="object-cover w-full h-32 rounded-lg mb-2"
-                                >
+                            <img
+                                src="{{ Storage::url($event->image) }}"
+                                alt="{{ $event->title }}"
+                                class="object-cover w-full h-48 rounded-lg"
+                            >
 
-                                <a
-                                    href="{{ route('events.show', $event->id) }}"
-                                    class="block text-xl font-semibold text-gray-900 mb-1"
-                                >
-                                    {{ $event->name }}
-                                </a>
+                            <!-- Date Bubble -->
+                            <span class="absolute top-2 right-2 inline-block w-fit text-xs font-medium text-gray-800 bg-white/90 px-3 py-1.5 rounded-lg shadow-sm">
+                                {{ \Carbon\Carbon::parse($event->date_time)->format('M j, Y') }}
+                            </span>
 
-                                <!-- Event Category -->
-                                <span class="inline-block text-sm font-medium text-red-500 mb-2">
-                                    {{ $event->category->name }}
-                                </span>
+                        </div>
 
-                                <span class="block text-gray-500 text-sm">
-                                    {{ \Carbon\Carbon::parse($event->date_time)->format('F j, Y, g:i a') }}
-                                </span>
+                        <a
+                            href="{{ route('events.show', $event->id) }}"
+                            class="block text-xl font-semibold text-gray-900 mb-1"
+                        >
+                            {{ $event->name }}
+                        </a>
 
-                                <!-- Event description -->
-                                <p class="mt-2 text-gray-600 text-sm">
-                                    {{ $event->description }}
-                                </p>
+                        <p class="mt-2 text-gray-600 text-sm">
+                            {{ $event->location }}
+                        </p>
 
-                            </div>
+                        <!-- Event Category -->
+                        <span class="inline-block text-sm font-medium text-red-500 bg-gray-100 px-3 py-1 rounded-lg shadow-sm mb-2 w-fit">
+                            {{ $event->category->name }}
+                        </span>
+
+                        <!-- Event description -->
+                        <p class="mt-2 text-gray-600 text-sm">
+                            {{ $event->description }}
+                        </p>
+
+                    </div>
 
                         @endif
 
@@ -178,26 +197,35 @@
 
                     <!-- Ongoing Events Section -->
 
-                    <h3 class="text-4xl font-bold mb-6 text-center mt-10 text-red-500">
+                    <h3 class="text-4xl font-bold mb-12 text-center mt-24 text-black">
                         {{ __('What\'s Happening This Month') }}
                     </h3>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                         @foreach ($ongoingEvents as $event)
 
                             <!-- Event Card -->
                             <div class="bg-white shadow-lg p-4 border border-gray-200 rounded-lg flex flex-col justify-between relative aspect-square">
 
-                                <img
-                                    src="{{ Storage::url($event->image) }}"
-                                    alt="{{ $event->title }}"
-                                    class="object-cover w-full h-32 rounded-lg mb-2"
-                                >
+                                <div class="relative w-full">
+
+                                    <img
+                                        src="{{ Storage::url($event->image) }}"
+                                        alt="{{ $event->title }}"
+                                        class="object-cover w-full h-48 rounded-lg"
+                                    >
+
+                                    <!-- Date Bubble -->
+                                    <span class="absolute top-2 right-2 inline-block w-fit text-xs font-medium text-gray-800 bg-white/90 px-3 py-1.5 rounded-lg shadow-sm">
+                                        {{ \Carbon\Carbon::parse($event->date_time)->format('M j, Y') }}
+                                    </span>
+
+                                </div>
 
                                 <a
                                     href="{{ route('events.show', $event->id) }}"
-                                    class="block text-xl font-semibold text-gray-900 mb-2"
+                                    class="block text-xl font-semibold text-gray-900 mb-1"
                                 >
                                     {{ $event->name }}
                                 </a>

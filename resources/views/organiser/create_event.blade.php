@@ -4,10 +4,10 @@
     <!-- Load Google Maps and Places API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzFvUmTlPsGe3yc1O2Ug7ThQBv7-hpx3I&libraries=places&callback=initAutocomplete" async defer></script>
 
-    <div class="relative overflow-hidden">
+    <div class="relative overflow-hidden py-12">
         <!-- Background Image with Blur -->
         <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
+            <img src="{{ asset('images/dash_background.png') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
         </div>
 
         <div class="relative z-10 text-center mb-6">
@@ -24,12 +24,12 @@
                 text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1),
                             0 4px 6px rgba(0, 0, 0, 0.1),
                             0 6px 12px rgba(0, 0, 0, 0.1);
-                font-family: 'Baloo', cursive; 
-                color: #c2185b; 
+                font-family: 'Baloo'; 
+                color: #232121; 
                 padding: 10px;
             }
             input:focus, textarea:focus, select:focus {
-                border: 2px solid #ff4081; /* Bright pink */
+                border: 2px solid #ff4081; 
                 box-shadow: 0 0 5px rgba(255, 20, 147, 0.7); /* Bright pink shadow */
             }
         </style>

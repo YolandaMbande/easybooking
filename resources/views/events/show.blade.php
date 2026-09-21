@@ -3,13 +3,14 @@
 @section('content')
     <div class="relative overflow-hidden min-h-screen flex flex-col"> 
         <!-- Background Image with Blur -->
-        <div class="absolute inset-0">
-            <img src="{{ asset('images/background.jpg') }}" alt="Background Image" class="object-cover w-full h-full filter blur-md">
-        </div>
+        <div
+    class="relative min-h-screen"
+    style="background-image: url('{{ asset('images/left_side.png') }}'); background-size: cover; background-position: center"
+>
 
         <main class="relative z-10 flex-grow">
-            <div class="flex justify-center mt-10">
-                <div class="event-details bg-gray-100 dark:bg-gray-700 shadow-lg rounded-lg p-8 max-w-lg w-full"> <!-- Changed background color -->
+            <div class="flex justify-start mt-10 ml-16">
+                <div class="event-details bg-white dark:bg-gray-700 shadow-lg rounded-lg p-8 max-w-lg w-full"> <!-- Changed background color -->
 
                     <h2 class="text-4xl font-bold text-pink-500 mb-6 text-center">{{ $event->name }}</h2>
 

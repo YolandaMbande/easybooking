@@ -36,7 +36,7 @@
             @include('layouts.footer')
         </div>
         <!-- Scroll to Top Button -->
-        <button id="scrollToTopButton" class="fixed bottom-5 right-5 bg-navy text-black px-4 py-2 rounded-full shadow-md hidden">
+        <button id="scrollToTopButton" class="fixed bottom-5 right-5 z-50 bg-navy text-black px-4 py-2 rounded-full shadow-md hidden">
             ↑ Top
         </button>
     </body>

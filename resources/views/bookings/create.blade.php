@@ -9,7 +9,7 @@
 
         <!-- Floating Caption -->
         <div class="absolute top-10 left-1/2 transform -translate-x-1/2 z-20 text-center">
-            <p class="text-4xl font-semibold text-white dark:text-gray-300">
+            <p class="text-4xl font-semibold text-black dark:text-gray-300">
                 Thank you for booking with us, please state the number of tickets you want to book:
             </p>
         </div>
