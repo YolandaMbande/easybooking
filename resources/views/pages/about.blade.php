@@ -1,0 +1,7 @@
+@extends('layouts.app')
+@section('title', 'How EasyBooking works')
+@section('content')
+<section class="simple-hero"><div class="eyebrow"><span class="eyebrow-line"></span> THE SHORT VERSION</div><h1>Good plans.<br><em>Made easy.</em></h1><p>EasyBooking is a place to discover experiences, find your people and spend a little less time wondering what to do next.</p><div class="simple-hero-mark">✳</div></section>
+<section class="how-section"><div class="eyebrow"><span class="eyebrow-line"></span> THREE LITTLE STEPS</div><div class="how-grid"><article><span class="step-number">01</span><span class="step-symbol">⌕</span><h2>Find your thing.</h2><p>Explore events by category, search for something specific or just see what's happening around you.</p></article><article><span class="step-number">02</span><span class="step-symbol">↗</span><h2>Make a plan.</h2><p>Get the details you need — when it's happening, where to go and what tickets are available.</p></article><article><span class="step-number">03</span><span class="step-symbol">✳</span><h2>Show up.</h2><p>Bring a friend, meet someone new or do your own thing. The best bit happens out there.</p></article></div></section>
+<section class="about-bottom"><div><span class="manifesto-kicker">READY WHEN YOU ARE</span><h2>Something good<br>is <em>happening.</em></h2></div><a class="button button-dark" href="{{ route('events.index') }}">Explore events <span>↗</span></a></section>
+@endsection

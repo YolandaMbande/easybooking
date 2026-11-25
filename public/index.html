@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EasyBooking – Events made easy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="top">
+ <a class="logo" href="#/">Easy<b>Booking</b></a>
+ <form class="pill" id="pill">
+  <span class="mag">🔍</span>
+  <label class="seg grow"><small>I'm interested in…</small><select id="fi"></select></label>
+  <label class="seg"><small>Where</small><input id="fw" value="Cape Town"></label>
+  <label class="seg"><small>When</small><select id="fn"><option value="">Anytime</option><option value="today">Today</option><option value="weekend">This weekend</option><option value="month">This month</option></select></label>
+  <button class="btn peach">Explore Nearby</button>
+ </form>
+ <div class="rt"><a id="hl" href="#/login">Host login ↗</a><button id="burger" aria-label="Menu">☰</button></div>
+</header>
+<div id="menu"></div>
+<main id="app"></main>
+<footer>
+ <div class="fcols">
+  <div><h4>Find events</h4><a href="#/?where=Cape Town">Cape Town events</a><a href="#/?where=Johannesburg">Johannesburg events</a><a href="#/?where=Durban">Durban events</a><a href="#/?where=Pretoria">Pretoria events</a><a href="#/?where=Online">Online events</a></div>
+  <div><h4>Host events</h4><a href="#/?where=Online">Online</a><a href="#/?cat=Music">Festivals</a><a href="#/?cat=Business">Conferences</a><a href="#/?cat=Workshops">Education</a><a href="#/?cat=Charity">Charity events</a><a href="#/?cat=Arts">Live shows</a></div>
+  <div><h4>About</h4><a href="#/about">About us</a><a href="#/careers">Careers</a><a href="#/contact">Contact us</a><a href="#/faqs">FAQs</a></div>
+  <div><h4>Use EasyBooking</h4><a href="#/create">Create an event</a><a href="#/dashboard">Organiser dashboard</a><a href="#/tickets">My tickets</a><a href="#/login">Sign in</a></div>
+ </div>
+ <div class="fbar"><a class="logo" href="#/">Easy<b>Booking</b></a><span>© EasyBooking 2026</span><span>Privacy policy</span><span>Terms of use</span><span>Organiser terms</span><select><option>South Africa</option></select></div>
+</footer>
+<script src="app.js"></script></body></html>
