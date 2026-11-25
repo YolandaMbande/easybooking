@@ -27,9 +27,6 @@ let db;
 // --------------------------------------------------
 // DATABASE
 // --------------------------------------------------
-
-const fs = require('fs');
-
 const dbConfig = {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT || 4000),
